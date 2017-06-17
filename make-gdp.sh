@@ -90,14 +90,17 @@ val_F = {}
 val_F1 = {}
 
 common_xpath_substr = "SeriesProperty[@TableName=\"國內生產毛額依支出分-${period_key}(1981以後)\"][@SERIESTYPE=\"原始值\"]/Obs"
+common_xpath_prefix = "當期價格(新台幣百萬元)"
+common_xpath_prefix = "連鎖實質值(2011為參考年_新台幣百萬元)"
 
-parse_into_matrix( './/Series[@ITEM="當期價格(新台幣百萬元)-6.GDP"]/'+common_xpath_substr , var_Y )
-parse_into_matrix( './/Series[@ITEM="當期價格(新台幣百萬元)-1.民間消費"]/'+common_xpath_substr, val_C )
-parse_into_matrix( './/Series[@ITEM="當期價格(新台幣百萬元)-2.政府消費"]/'+common_xpath_substr, val_G )
-parse_into_matrix( './/Series[@ITEM="當期價格(新台幣百萬元)-4.商品及服務輸出:4.1--4.2合計"]/'+common_xpath_substr , val_X )
-parse_into_matrix( './/Series[@ITEM="當期價格(新台幣百萬元)-5.商品及服務輸入:5.1--5.2合計"]/'+common_xpath_substr , val_M )
-parse_into_matrix( './/Series[@ITEM="當期價格(新台幣百萬元)-3.資本形成:3.1--3.2合計"]/'+common_xpath_substr, val_F )
-parse_into_matrix( './/Series[@ITEM="當期價格(新台幣百萬元)-3.1固定資本形成"]/'+common_xpath_substr, val_F1 )
+
+parse_into_matrix( './/Series[@ITEM="'+common_xpath_prefix+'-6.GDP"]/'+common_xpath_substr , var_Y )
+parse_into_matrix( './/Series[@ITEM="'+common_xpath_prefix+'-1.民間消費"]/'+common_xpath_substr, val_C )
+parse_into_matrix( './/Series[@ITEM="'+common_xpath_prefix+'-2.政府消費"]/'+common_xpath_substr, val_G )
+parse_into_matrix( './/Series[@ITEM="'+common_xpath_prefix+'-4.商品及服務輸出:4.1--4.2合計"]/'+common_xpath_substr , val_X )
+parse_into_matrix( './/Series[@ITEM="'+common_xpath_prefix+'-5.商品及服務輸入:5.1--5.2合計"]/'+common_xpath_substr , val_M )
+parse_into_matrix( './/Series[@ITEM="'+common_xpath_prefix+'-3.資本形成:3.1--3.2合計"]/'+common_xpath_substr, val_F )
+parse_into_matrix( './/Series[@ITEM="'+common_xpath_prefix+'-3.1固定資本形成"]/'+common_xpath_substr, val_F1 )
 
 for tt in var_Y.keys():
     var_y = float(var_Y[tt])
